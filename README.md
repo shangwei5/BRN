@@ -50,7 +50,7 @@ Run shell scripts to test the models:
 ```bash
 bash test_BRN.sh   # test models about BRN
 bash test_CRN.sh   # test models about CRN
-bash test_BRN-XR.sh     # test models about BRN-XR
+bash test_BRN-XR.sh     # test models about BRN$_{x\rightarrow r}$
 bash test_BRN-RX.sh   # test models about BRN-RX
 ```
 All the results in the paper are also available at [BaiduYun](https://pan.baidu.com/s/1_La88cg4npzYpEv8Y6d5EQ).
