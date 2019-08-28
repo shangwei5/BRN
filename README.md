@@ -53,8 +53,8 @@ bash test_Rain1400.sh   # test models on Rain1400
 bash test_Ablation.sh   # test models in Ablation Study
 bash test_real.sh       # test PReNet on real rainy images
 ```
-All the results in the paper are also available at [BaiduYun](https://pan.baidu.com/s/1Oym9G-8Bq-0FU2BfbARf8g).
-You can place the downloaded results into `./results/`, and directly compute all the [evaluation metrics](statistic/) in this paper.  
+All the results in the paper are also available at [BaiduYun](https://pan.baidu.com/s/1_La88cg4npzYpEv8Y6d5EQ).
+You can place the downloaded results into `./results/`, and directly compute all the [evaluation metrics](statistics/) in this paper.  
 
 ### 2) Evaluation metrics
 
