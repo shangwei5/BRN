@@ -2,7 +2,7 @@
 ### Introduction
 We in this paper propose a bilateral recurrent network (**BRN**) to simultaneously exploit the rain streak layer and the clean background image. 
 Generally, we employ dual residual networks (**ResNet**) that are recursively unfolded to sequentially extract the rain streak layer (**Fr**) and predict the clean background image (**Fx**). 
-In particular, we further propose bilateral LSTMs (**BLSTM**), which not only can respectively propagate deep features of the rain streak layer and the background image acorss stages, but also bring reciprocal communications between Fr and Fx. 
+In particular, we further propose bilateral LSTMs (**BLSTM**), which not only can respectively propagate deep features of the rain streak layer and the background image acorss stages, but also bring reciprocal communications between (**Fr**) and (**Fx**). 
 The experimental results demonstrate that our BRN notably outperforms state-of-the-art deep deraining networks on synthetic datasets quantitatively and qualitatively. On real rainy images, our BRN also performs more favorably in generating visually plausible background images. 
 
 
@@ -26,6 +26,8 @@ RainTrainH [1] and RainTrainL [1] from [BaiduYun](https://pan.baidu.com/s/1J0q6M
 or [OneDrive](https://1drv.ms/f/s!AqLfQqtZ6GwGgep-hgjLxkov2SSZ3g), 
 and place the unzipped folders into `/media/r/dataset/rain/`. 
 
+Of course, you can also create your own folders to place datasets, but make sure it corresponds to `--data_path` in `.sh`.
+
 *_We note that:_
 
 _(i) The datasets in the website of [1] seem to be modified. 
@@ -46,15 +48,13 @@ We have placed our pre-trained models into `./logs/`.
 
 Run shell scripts to test the models:
 ```bash
-bash test_Rain100H.sh   # test models on Rain100H
-bash test_Rain100L.sh   # test models on Rain100L
-bash test_Rain12.sh     # test models on Rain12
-bash test_Rain1400.sh   # test models on Rain1400 
-bash test_Ablation.sh   # test models in Ablation Study
-bash test_real.sh       # test PReNet on real rainy images
+bash test_BRN.sh   # test models about BRN
+bash test_CRN.sh   # test models about CRN
+bash test_BRN-XR.sh     # test models about BRN-XR
+bash test_BRN-RX.sh   # test models about BRN-RX
 ```
 All the results in the paper are also available at [BaiduYun](https://pan.baidu.com/s/1_La88cg4npzYpEv8Y6d5EQ).
-You can place the downloaded results into `./results/`, and directly compute all the [evaluation metrics](statistics/) in this paper.  
+You can place the downloaded results into `./result/`, and directly compute all the [evaluation metrics](statistics/) in this paper.  
 
 ### 2) Evaluation metrics
 
@@ -66,8 +66,6 @@ We also provide the MATLAB scripts to compute the average PSNR and SSIM values r
  run statistic_Rain100H.m
  run statistic_Rain100L.m
  run statistic_Rain12.m
- run statistic_Rain1400.m
- run statistic_Ablation.m  # compute the metrics in Ablation Study
 ```
 ###
 Average PSNR/SSIM values on four datasets:
@@ -83,10 +81,8 @@ Rain12     |36.70/0.959|36.63/0.959|36.54/0.959|36.58/0.959
 
 Run shell scripts to train the models:
 ```bash
-bash train_PReNet.sh      
-bash train_PRN.sh   
-bash train_PReNet_r.sh    
-bash train_PRN_r.sh  
+bash train_R100H.sh      
+bash train_R100L.sh   
 ```
 You can use `tensorboard --logdir ./logs/your_model_path` to check the training procedures. 
 
@@ -98,8 +94,8 @@ The following tables provide the configurations of options.
 
 Option                 |Default        | Description
 -----------------------|---------------|------------
-batchSize              | 18            | Training batch size
-recurrent_iter         | 6             | Number of recursive stages
+batchSize              | 12            | Training batch size
+inter_iter             | 4             | Number of recursive stages
 epochs                 | 100           | Number of training epochs
 milestone              | [30,50,80]    | When to decay learning rate
 lr                     | 1e-3          | Initial learning rate
@@ -107,7 +103,7 @@ save_freq              | 1             | save intermediate model
 use_GPU                | True          | use GPU or not
 gpu_id                 | 0             | GPU id
 data_path              | N/A           | path to training images
-save_path              | N/A           | path to save models and status           
+outf                   | N/A           | path to save models and status           
 
 #### Testing Mode Configurations
 
@@ -115,10 +111,11 @@ Option                 |Default           | Description
 -----------------------|------------------|------------
 use_GPU                | True             | use GPU or not
 gpu_id                 | 0                | GPU id
-recurrent_iter         | 6                | Number of recursive stages
+inter_iter             | 4                | Number of recursive stages
 logdir                 | N/A              | path to trained model
 data_path              | N/A              | path to testing images
 save_path              | N/A              | path to save results
+save_path_r            | N/A              | path to save rain streaks
 
 ## References
 [1] Yang W, Tan RT, Feng J, Liu J, Guo Z, Yan S. Deep joint rain detection and removal from a single image. In IEEE CVPR 2017.
