@@ -19,12 +19,12 @@ BRN and its variants are evaluated on three datasets*:
 Rain100H [1], Rain100L [1] and Rain12 [2]. 
 Please download the testing datasets from [BaiduYun](https://pan.baidu.com/s/1J0q6Mrno9aMCsaWZUtmbkg)
 or [OneDrive](https://1drv.ms/f/s!AqLfQqtZ6GwGgep-hgjLxkov2SSZ3g), 
-and place the unzipped folders into `./datasets/test/`.
+and place the unzipped folders into `/media/r/dataset/rain/`.
 
 To train the models, please download training datasets: 
 RainTrainH [1] and RainTrainL [1] from [BaiduYun](https://pan.baidu.com/s/1J0q6Mrno9aMCsaWZUtmbkg)
 or [OneDrive](https://1drv.ms/f/s!AqLfQqtZ6GwGgep-hgjLxkov2SSZ3g), 
-and place the unzipped folders into `./datasets/train/`. 
+and place the unzipped folders into `/media/r/dataset/rain/`. 
 
 *_We note that:_
 
