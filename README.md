@@ -53,7 +53,7 @@ bash test_CRN.sh   # test models about CRN
 bash test_BRN-XR.sh     # test models about BRN-XR
 bash test_BRN-RX.sh   # test models about BRN-RX
 ```
-All the results in the paper are also available at [BaiduYun](https://pan.baidu.com/s/1_La88cg4npzYpEv8Y6d5EQ).
+All the results in the paper are also available at [BaiduYun](https://pan.baidu.com/s/1KnJBNPB6Me5V464rJJT3ig&shfl=sharepset).
 You can place the downloaded results into `./result/`, and directly compute all the [evaluation metrics](statistics/) in this paper.  
 
 ### 2) Evaluation metrics
