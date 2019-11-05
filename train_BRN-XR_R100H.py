@@ -24,19 +24,14 @@ from generator import Generator_prelstminter33, print_network
 # os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-parser = argparse.ArgumentParser(description="Recurrent")
+parser = argparse.ArgumentParser(description="BRN-XR")
 parser.add_argument("--preprocess", type=bool, default=False, help='run prepare_data or not')
 parser.add_argument("--batchSize", type=int, default=12, help="Training batch size")
-parser.add_argument("--num_of_layers", type=int, default=17, help="Number of total layers")
 parser.add_argument("--epochs", type=int, default=100, help="Number of training epochs")
-parser.add_argument("--milestone", type=int, default=30, help="When to decay learning rate; should be less than epochs")
 parser.add_argument("--lr", type=float, default=1e-3, help="Initial learning rate")
 parser.add_argument("--outf", type=str, default="logs/BRN-XR/R100H", help='path of log files')
-parser.add_argument("--mode", type=str, default="S", help='with known noise level (S) or blind training (B)')
-parser.add_argument("--noiseL", type=float, default=25, help='noise level; ignored when mode=B')
-parser.add_argument("--val_noiseL", type=float, default=25, help='noise level used on validation set')
 parser.add_argument("--save_freq", type=int, default=1, help='save intermediate model')
-parser.add_argument("--data_path", type=str, default="/home/shangwei/dataset/RainTrainH_wo_test",help='path to training data')
+parser.add_argument("--data_path", type=str, default="dataset/...",help='path to training data')
 parser.add_argument("--use_GPU", type=bool, default=True, help='use GPU or not')
 parser.add_argument("--gpu_id", type=str, default="0", help='GPU id')
 parser.add_argument("--inter_iter", type=int, default=4, help='number of inter_iteration')
@@ -58,9 +53,6 @@ def main():
     loader_train = DataLoader(dataset=dataset_train, num_workers=4, batch_size=opt.batchSize, shuffle=True)
     print("# of training samples: %d\n" % int(len(dataset_train)))
     # Build model
-    # vgg = Vgg16(requires_grad=False).cuda()
-    # net = DnCNN(channels=1, num_of_layers=opt.num_of_layers)
-    # net.apply(weights_init_kaiming)
 
     net = Generator_prelstminter33(recurrent_iter=opt.inter_iter, use_GPU=opt.use_GPU)
     #net = nn.DataParallel(net)
@@ -76,7 +68,7 @@ def main():
     # Optimizer
     optimizer = optim.Adam(model.parameters(), lr=opt.lr)
     scheduler = MultiStepLR(optimizer, milestones=[30, 50, 80], gamma=0.2)  # learning rates
-    #scheduler = MultiStepLR(optimizer, milestones=[120, 140], gamma=0.2)
+   
     # training
     writer = SummaryWriter(opt.outf)
     step = 0
