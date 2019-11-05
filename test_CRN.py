@@ -15,7 +15,7 @@ import time
 #os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 
 
-parser = argparse.ArgumentParser(description="DCRN_Test")
+parser = argparse.ArgumentParser(description="CRN_Test")
 parser.add_argument("--logdir", type=str, default="logs/CRN/R100H", help='path of log files')
 parser.add_argument("--data_path", type=str, default="dataset/...", help='path to testing data')
 parser.add_argument("--save_path", type=str, default="result/CRN/R100H/output", help='path to save results')
