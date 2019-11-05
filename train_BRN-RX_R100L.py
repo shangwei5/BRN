@@ -24,7 +24,7 @@ from generator import Generator_prelstminter11, print_network
 # os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-parser = argparse.ArgumentParser(description="Recurrent")
+parser = argparse.ArgumentParser(description="BRN-RX")
 parser.add_argument("--preprocess", type=bool, default=False, help='run prepare_data or not')
 parser.add_argument("--batchSize", type=int, default=12, help="Training batch size")
 parser.add_argument("--epochs", type=int, default=100, help="Number of training epochs")
