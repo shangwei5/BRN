@@ -15,14 +15,11 @@ import time
 #os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 
 
-parser = argparse.ArgumentParser(description="DnCNN_Test")
-parser.add_argument("--num_of_layers", type=int, default=17, help="Number of total layers")
+parser = argparse.ArgumentParser(description="BRN_Test")
 parser.add_argument("--logdir", type=str, default="logs/real", help='path of log files')
-parser.add_argument("--test_data", type=str, default='Set12', help='test on Set12 or Set68')
-parser.add_argument("--test_noiseL", type=float, default=25, help='noise level used on test set')
-parser.add_argument("--data_path", type=str, default="/meida/r/dataset/rain/real", help='path to training data')
+parser.add_argument("--data_path", type=str, default="dataset/...", help='path to training data')
 parser.add_argument("--save_path", type=str, default="result/real/output", help='path to save results')
-parser.add_argument("--save_path_r", type=str, default="result/real/rainstreak", help='path to save rainresults')
+parser.add_argument("--save_path_r", type=str, default="result/real/rainstreak", help='path to save rain streaks')
 parser.add_argument("--use_GPU", type=bool, default=True, help='use GPU or not')
 parser.add_argument("--gpu_id", type=str, default="0", help='GPU id')
 parser.add_argument("--inter_iter", type=int, default=4, help='number of inter_iteration')
@@ -31,10 +28,6 @@ opt = parser.parse_args()
 if opt.use_GPU:
     os.environ["CUDA_VISIBLE_DEVICES"] = opt.gpu_id
 
-
-# opt.save_path = os.path.join(opt.data_path, opt.save_path)
-# if not os.path.exists(opt.save_path):
-#     os.mkdir(opt.save_path)
 
 def normalize(data):
     return data/255.
