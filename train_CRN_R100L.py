@@ -24,19 +24,14 @@ from generator import Generator_prelstm, print_network
 # os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-parser = argparse.ArgumentParser(description="Recurrent")
+parser = argparse.ArgumentParser(description="CRN")
 parser.add_argument("--preprocess", type=bool, default=False, help='run prepare_data or not')
 parser.add_argument("--batchSize", type=int, default=12, help="Training batch size")
-parser.add_argument("--num_of_layers", type=int, default=17, help="Number of total layers")
 parser.add_argument("--epochs", type=int, default=100, help="Number of training epochs")
-parser.add_argument("--milestone", type=int, default=30, help="When to decay learning rate; should be less than epochs")
 parser.add_argument("--lr", type=float, default=1e-3, help="Initial learning rate")
 parser.add_argument("--outf", type=str, default="logs/CRN/R100L", help='path of log files')
-parser.add_argument("--mode", type=str, default="S", help='with known noise level (S) or blind training (B)')
-parser.add_argument("--noiseL", type=float, default=25, help='noise level; ignored when mode=B')
-parser.add_argument("--val_noiseL", type=float, default=25, help='noise level used on validation set')
 parser.add_argument("--save_freq", type=int, default=1, help='save intermediate model')
-parser.add_argument("--data_path", type=str, default="/home/shangwei/dataset/RainTrainH_wo_test",help='path to training data')
+parser.add_argument("--data_path", type=str, default="dataset/...",help='path to training data')
 parser.add_argument("--use_GPU", type=bool, default=True, help='use GPU or not')
 parser.add_argument("--gpu_id", type=str, default="0", help='GPU id')
 parser.add_argument("--inter_iter", type=int, default=4, help='number of inter_iteration')
