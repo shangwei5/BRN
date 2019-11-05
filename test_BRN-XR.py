@@ -15,12 +15,9 @@ import time
 #os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 
 
-parser = argparse.ArgumentParser(description="DnCNN_Test")
-parser.add_argument("--num_of_layers", type=int, default=17, help="Number of total layers")
+parser = argparse.ArgumentParser(description="BRN-XR_Test")
 parser.add_argument("--logdir", type=str, default="logs/BRN-XR/R100H", help='path of log files')
-parser.add_argument("--test_data", type=str, default='Set12', help='test on Set12 or Set68')
-parser.add_argument("--test_noiseL", type=float, default=25, help='noise level used on test set')
-parser.add_argument("--data_path", type=str, default="/home/shangwei/dataset/R100H/test", help='path to training data')
+parser.add_argument("--data_path", type=str, default="/dataset/...", help='path to testing data')
 parser.add_argument("--save_path", type=str, default="result/BRN-XR/R100H/output", help='path to save results')
 parser.add_argument("--save_path_r", type=str, default="result/BRN-XR/R100H/rainstreak", help='path to save rainresults')
 parser.add_argument("--use_GPU", type=bool, default=True, help='use GPU or not')
