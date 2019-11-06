@@ -1,3 +1,3 @@
-All the results in the paper are available at https://pan.baidu.com/s/1_La88cg4npzYpEv8Y6d5EQ .
+All the results in the paper are also available at [BaiduYun](https://pan.baidu.com/s/1KnJBNPB6Me5V464rJJT3ig&shfl=sharepset).
 
-Please place the downloaded results into `./results/`, and then you can directly compute all the evaluation metrics using Matlab scripts in `./statistic/`
+You can place the downloaded results into `./result/`, and directly compute all the [evaluation metrics](statistics/) in this paper. 
