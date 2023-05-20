@@ -1,5 +1,5 @@
 ## Bilateral Recursive Network for Single Image Deraining（ICASSP  2020）
-[[pdf](https://csdwren.github.io/papers/2020_icassp_BRN.pdf)]
+[[pdf](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9053081)
 ### Introduction
 We in this paper propose a bilateral recurrent network (**BRN**) to simultaneously exploit the rain streak layer and the clean background image. 
 Generally, we employ dual residual networks (**ResNet**) that are recursively unfolded to sequentially extract the rain streak layer (**Fr**) and predict the clean background image (**Fx**). 
